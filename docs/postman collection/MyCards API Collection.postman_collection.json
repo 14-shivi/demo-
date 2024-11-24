@@ -1,0 +1,962 @@
+{
+	"info": {
+		"_postman_id": "238156a1-05c6-495d-a7fd-3d35eb7d1982",
+		"name": "MyCards API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29707403",
+		"_collection_link": "https://chingiringi.postman.co/workspace/ChingiRingi-Workspace~f893059b-4e8b-4ed3-8ca1-20bfd225de8b/collection/29707403-238156a1-05c6-495d-a7fd-3d35eb7d1982?action=share&source=collection_link&creator=29707403"
+	},
+	"item": [
+		{
+			"name": "UserManagement",
+			"item": [
+				{
+					"name": "signup",
+					"item": [
+						{
+							"name": "create-user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\",\r\n        \"password\": \"password\",\r\n        \"emailOtp\": \"347017\",\r\n        \"mobileOtp\": \"347017\",\r\n        \"ipAddress\": \"192.168.1.1\",\r\n        \"firstName\": \"Firstname\",\r\n        \"lastName\": \"Lastname\",\r\n        \"termsAccepted\": \"true\",\r\n        \"gender\": \"male\",\r\n        \"dob\": \"1998-05-05\",\r\n        \"salutation\": \"Mr\"\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/users/signup"
+							},
+							"response": []
+						},
+						{
+							"name": "generate-otp-for-registration",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "6",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"mobile\": \"8805265880\",\r\n      \"email\": \"example1@gmail.com\"\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/users/otp/generate-register"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "login-user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\",\r\n        \"password\": \"password\",\r\n        \"emailOtp\": \"767671\",\r\n        \"mobileOtp\": \"767671\",\r\n        \"ipAddress\": \"192.168.1.1\"\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/users/signIn"
+							},
+							"response": [
+								{
+									"name": "login-succes",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"password\": \"password\",\r\n    //   \"mobile\": \"12345\",\r\n      \"email\": \"email12345abc\",\r\n      \"emailOtp\": \"emailOtp\",\r\n      \"mobileOtp\": \"mobileOtp\",\r\n      \"ipAddress\": \"ipAddress\"\r\n    }\r\n  }\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseURL}}/api/users/login"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 07 Oct 2024 12:51:24 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"attributes\": {\n            \"token\": \"eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJteWNhcmRzLXNlcnZpY2UiLCJpYXQiOjE3MjgzMDU0ODQsImV4cCI6MTcyODkxMDI4NH0.xVYcKHRGlqpO2ARalVqxhMycGSfxT7Rnpxi2DrD4nOpoZvzbanufMoUktAcra9S5\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "generate-otp-for-login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "6",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"mobile\": \"8805265888\",\r\n      \"email\": \"vishwasransing@gmail.com\"\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/users/otp/generate-login"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get-user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "4",
+								"type": "text"
+							}
+						],
+						"url": "{{baseURL}}/api/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "update-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\",\r\n        \"password\": \"password\",\r\n        \"emailOtp\": \"123456\",\r\n        \"mobileOtp\": \"654321\",\r\n        \"ipAddress\": \"192.168.1.1\",\r\n        \"firstName\": \"Personname\",\r\n        \"lastName\": \"Personlastname\",\r\n        \"termsAccepted\": \"true\",\r\n        \"gender\": \"male\",\r\n        \"dob\": \"1998-05-05\",\r\n        \"salutation\": \"Mr\"\r\n      \r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/users/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "generate-otp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "6",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"mobile\": \"8805265880\",\r\n      \"email\": \"example1@gmail.com\"\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/users/otp/generate-reset"
+					},
+					"response": []
+				},
+				{
+					"name": "verify-otp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"mobile\": \"8805265880\",\r\n      \"email\": \"example1@gmail.com\",\r\n      \"mobileOtp\": \"497115\",\r\n      \"emailOtp\": \"497115\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/users/otp/verify"
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"mobile\": \"8805265880\",\r\n      \"email\": \"example1@gmail.com\",\r\n      \"mobileOtp\": \"584161\",\r\n      \"emailOtp\": \"584161\",\r\n      \"ipAddress\": \"192.168.1.1\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/users/password/reset"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserActivity",
+			"item": [
+				{
+					"name": "create-activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "10",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"activity\",\r\n    \"attributes\": {\r\n        \"eventType\": \"Sign-in\",    // Account created, User signed in, Updated profile\r\n        \"userId\": \"10\",\r\n        \"ipAddress\": \"192.168.9.5\",\r\n        \"eventDetails\": \"User signed in\"\r\n\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/activity"
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-specific-user-activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "11",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Pathvariable should be either one of these: userId, email, mobile\r\n\r\n{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"activity\",\r\n    \"attributes\": {\r\n        // \"startDate\": \"2024-10-10\",                     // Optional, yyyy-MM-dd format should be followed here\r\n        // \"endDate\": \"2024-10-18\",                       // Optional, If not present - current date is considered endDate\r\n        // \"eventType\": \"Sign-in\",                // Optional, if not provided, all the activities between defined period are retrieved\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\"\r\n    }\r\n  }\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/activity/mobile"
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-all-user-activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"activity\",\r\n    \"attributes\": {\r\n        \"eventType\": \"sign-in\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/activity/all"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CardManagement",
+			"item": [
+				{
+					"name": "add-card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "20",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"card\",\r\n    \"attributes\": {\r\n        \"bankName\": \"SBI\",\r\n        \"cardNumber\": \"1234567890123450\",\r\n        \"expiry\": \"11/31\",\r\n        \"issueDate\": \"11/23\",\r\n        \"cardType\": \"credit\",         // Debit / credit\r\n        \"cardName\": \"simplysave\"       // Platinum, moneyback, simplysave etc.\r\n\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cards"
+					},
+					"response": []
+				},
+				{
+					"name": "update-card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "21",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"card\",\r\n    \"attributes\": {\r\n        \"bankName\": \"ABC bank1\",\r\n        \"cardNumber\": \"1234567890123456\",\r\n        \"expiry\": \"11/32\",\r\n        \"issueDate\": \"11/22\",\r\n        \"cardType\": \"credit\",         // Debit / credit\r\n        \"cardName\": \"platinum\"       // Platinum, moneyback, simplysave etc.\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cards"
+					},
+					"response": []
+				},
+				{
+					"name": "delete-card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "20",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"card\",\r\n    \"attributes\": {\r\n        \"bankName\": \"ABC bank\",\r\n        \"cardNumber\": \"1234567890123456\",\r\n        \"expiry\": \"11/31\",\r\n        \"issueDate\": \"11/23\",\r\n        \"cardType\": \"debit\",         // Debit / credit\r\n        \"cardName\": \"platinum\"       // Platinum, moneyback, simplysave etc.\r\n\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/cards"
+					},
+					"response": []
+				},
+				{
+					"name": "get-card-by-Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "23",
+								"type": "text"
+							}
+						],
+						"url": "{{baseURL}}/api/cards/2"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-cards",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "24",
+								"type": "text"
+							}
+						],
+						"url": "{{baseURL}}/api/cards"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LLM-Chat",
+			"item": [
+				{
+					"name": "send-prompt",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "401",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"chat\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\",\r\n        \"inputMessage\": \"Give me a motivating quote\"\r\n\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/chat"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Partners",
+			"item": [
+				{
+					"name": "SignUp",
+					"item": [
+						{
+							"name": "sign-up",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "401",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\",\r\n        \"password\": \"password\",\r\n        \"emailOtp\": \"347017\",\r\n        \"mobileOtp\": \"347017\",\r\n        \"ipAddress\": \"192.168.1.1\",\r\n        \"companyName\": \"CompanyName\",\r\n        \"companyAddress\": \"Address abc\",\r\n        \"dateOfIncorporation\": \"1998-05-05\",\r\n        \"license\": \"asdcf12345\",            \r\n        \"cin\": \"1212\",                      // unique\r\n        \"gstNo\": \"1241324\"                  // unique\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/partners/banks/signUp"
+							},
+							"response": []
+						},
+						{
+							"name": "generate-otp-signup",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "6",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\"\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/partners/banks/otp/generate-register"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SignIn",
+					"item": [
+						{
+							"name": "sign-in",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{authToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "401",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\",\r\n        \"password\": \"password\",\r\n        \"emailOtp\": \"767671\",\r\n        \"mobileOtp\": \"767671\",\r\n        \"ipAddress\": \"192.168.1.1\"\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/partners/banks/signIn"
+							},
+							"response": []
+						},
+						{
+							"name": "generate-otp-signin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "6",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\"\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/partners/banks/otp/generate-login"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ResetPassword",
+					"item": [
+						{
+							"name": "reset-password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"mobile\": \"8805265880\",\r\n      \"email\": \"example1@gmail.com\",\r\n      \"mobileOtp\": \"584161\",\r\n      \"emailOtp\": \"584161\",\r\n      \"ipAddress\": \"192.168.1.1\"\r\n    }\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/partners/banks/password/reset"
+							},
+							"response": []
+						},
+						{
+							"name": "generate-otp-resetpassword",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "requestId",
+										"value": "6",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\"\r\n    }\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/api/partners/banks/otp/generate-reset"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "update-profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n        \"email\": \"example1@gmail.com\",\r\n        \"mobile\": \"8805265880\",\r\n        \"password\": \"password\",\r\n        \"emailOtp\": \"347017\",\r\n        \"mobileOtp\": \"347017\",\r\n        \"ipAddress\": \"192.168.1.1\",\r\n        \"companyName\": \"CompanyName\",\r\n        \"companyAddress\": \"Address abc\",\r\n        \"dateOfIncorporation\": \"1998-05-05\",\r\n        \"license\": \"asdcf12345\",            \r\n        \"cin\": \"1212\",                      // unique\r\n        \"gstNo\": \"1241324\"                  // unique\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/partners/banks/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "generate-otp",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "6",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"id\": \"6\"\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/partners/banks/otp/generate"
+					},
+					"response": []
+				},
+				{
+					"name": "verify-otp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"user\",\r\n    \"attributes\": {\r\n      \"id\": \"6\",\r\n      \"mobileOtp\": \"870155\",\r\n      \"emailOtp\": \"870155\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/partners/banks/otp/verify"
+					},
+					"response": []
+				},
+				{
+					"name": "create-activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "10",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"activity\",\r\n    \"attributes\": {\r\n        \"eventType\": \"Sign-in\",    // Account created, User signed in, Updated profile\r\n        \"id\": \"10\",\r\n        \"ipAddress\": \"192.168.9.5\"\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/partners/banks/activity"
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-specific-activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "11",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Pathvariable should be either one of these: userId, email, mobile\r\n\r\n{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"activity\",\r\n    \"attributes\": {\r\n        // \"startDate\": \"2024-10-10\"                    // Optional, yyyy-MM-dd format should be followed here\r\n        // \"endDate\": \"2024-10-18\",                       // Optional, If not present - current date is considered endDate\r\n        // \"eventType\": \"Sign-in\"                // Optional, if not provided, all the activities between defined period are retrieved\r\n \r\n    }\r\n  }\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/partners/banks/activity/6"
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve-all-activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{authToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "requestId",
+								"value": "11",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Pathvariable should be either one of these: userId, email, mobile\r\n\r\n{\r\n  \"data\": {\r\n    \"id\": \"13453\",\r\n    \"type\": \"activity\",\r\n    \"attributes\": {\r\n\r\n        \"eventType\": \"Sign-in\"           // Optional, returns all fields if not provided\r\n \r\n    }\r\n  }\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/api/partners/banks/activity/all"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

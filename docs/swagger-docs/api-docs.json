@@ -1,0 +1,2034 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Card-Controller",
+      "description": "CRUD operations for cards"
+    },
+    {
+      "name": "UserActivity-Controller",
+      "description": "CRUD operations for UserActivity"
+    },
+    {
+      "name": "User-Controller",
+      "description": "CRUD operations for user + Login operation"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/users/profile": {
+      "put": {
+        "tags": [
+          "User-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "updateUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "user",
+                  "attributes": {
+                    "email": "vishwasransing@gmail.com",
+                    "mobile": "8805265888",
+                    "password": "password",
+                    "emailOtp": "123456",
+                    "mobileOtp": "654321",
+                    "ipAddress": "192.168.1.1",
+                    "firstName": "Vishwas",
+                    "lastName": "Ransingh",
+                    "termsAccepted": "true",
+                    "gender": "male",
+                    "dob": "1998-05-05",
+                    "salutation": "Mr."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cards": {
+      "put": {
+        "tags": [
+          "Card-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "updateCard",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "card",
+                  "attributes": {
+                    "bankName": "ABC bank",
+                    "cardNumber": "1234567890123456895",
+                    "expiry": "11/31",
+                    "issueDate": "11/23",
+                    "cardType": "debit",
+                    "cardName": "platinum"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Card-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UID for each request",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "operationId": "addCard",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "card",
+                  "attributes": {
+                    "bankName": "ABC bank",
+                    "cardNumber": "1234567890123456895",
+                    "expiry": "11/31",
+                    "issueDate": "11/23",
+                    "cardType": "debit",
+                    "cardName": "platinum"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Card-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "operationId": "deleteCard",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "card",
+                  "attributes": {
+                    "bankName": "ABC bank",
+                    "cardNumber": "1234567890123456",
+                    "expiry": "11/31",
+                    "issueDate": "11/23",
+                    "cardType": "debit",
+                    "cardName": "platinum"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/signup": {
+      "post": {
+        "tags": [
+          "User-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "createUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "user",
+                  "attributes": {
+                    "email": "vishwasransing@gmail.com",
+                    "mobile": "8805265888",
+                    "password": "password",
+                    "emailOtp": "372725",
+                    "mobileOtp": "372725",
+                    "ipAddress": "192.168.1.1",
+                    "firstName": "Vishwas",
+                    "lastName": "Ransingh",
+                    "termsAccepted": "true",
+                    "gender": "male",
+                    "dob": "1998-05-05",
+                    "salutation": "Mr."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/signIn": {
+      "post": {
+        "tags": [
+          "User-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "user",
+                  "attributes": {
+                    "email": "vishwasransing@gmail.com",
+                    "mobile": "8805265888",
+                    "password": "password",
+                    "emailOtp": "372725",
+                    "mobileOtp": "372725",
+                    "ipAddress": "192.168.1.1"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/password/reset": {
+      "post": {
+        "tags": [
+          "User-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "forgotPassword",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "user",
+                  "attributes": {
+                    "mobile": "8805265888",
+                    "email": "vishwasransing@gmail.com",
+                    "mobileOtp": "584161",
+                    "emailOtp": "584161",
+                    "ipAddress": "192.168.1.1"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/otp/verify": {
+      "post": {
+        "tags": [
+          "User-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/UserRequest"
+            }
+          }
+        ],
+        "operationId": "verifyOtpForUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestDTO"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "user",
+                  "attributes": {
+                    "mobile": "8805265888",
+                    "email": "vishwasransing@gmail.com",
+                    "mobileOtp": "584161",
+                    "emailOtp": "584161"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/otp/generate-reset": {
+      "post": {
+        "tags": [
+          "User-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "generateOtpForPasswordResetForUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "user",
+                  "attributes": {
+                    "mobile": "7743898263",
+                    "email": "vishwasransingh@gmail.com"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/otp/generate-register": {
+      "post": {
+        "tags": [
+          "User-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "generateOtpForNewRegistrationForUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "user",
+                  "attributes": {
+                    "mobile": "8805265888",
+                    "email": "vishwasransing@gmail.com"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/otp/generate-login": {
+      "post": {
+        "tags": [
+          "User-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "generateOtpForLoginForUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "user",
+                  "attributes": {
+                    "mobile": "8805265888",
+                    "email": "vishwasransing@gmail.com"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/activity": {
+      "get": {
+        "tags": [
+          "UserActivity-Controller"
+        ],
+        "operationId": "getAllUserActivitiesBasedOnEventType",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          },
+          {
+            "name": "arg0",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/UserActivityRequest"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserActivityRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "activity",
+                  "attributes": {
+                    "eventType": "sign-in"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOListUserActivity"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UserActivity-Controller"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "operationId": "createUserActivity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserActivityRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "activity",
+                  "attributes": {
+                    "eventType": "Sign-in",
+                    "userId": "10",
+                    "ipAddress": "192.168.9.5",
+                    "eventDetails": "User signed in"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "tags": [
+          "User-Controller"
+        ],
+        "operationId": "retrieveUser",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User-Controller"
+        ],
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {}
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cards/{cardId}": {
+      "get": {
+        "tags": [
+          "Card-Controller"
+        ],
+        "operationId": "getCard",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          },
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardRequest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/activity/{param}": {
+      "get": {
+        "tags": [
+          "UserActivity-Controller"
+        ],
+        "operationId": "getUserActivityForSpecificUser",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          },
+          {
+            "name": "param",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "arg1",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestDTO"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserActivityRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "activity",
+                  "attributes": {
+                    "startDate": "2024-10-10",
+                    "endDate": "2024-10-18",
+                    "eventType": "Sign-in",
+                    "email": "vishwasransingh@gmail.com",
+                    "mobile": "7743898263"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/chat": {
+      "post": {
+        "tags": [
+          "Chat-Controller"
+        ],
+        "operationId": "sendMessage",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatRequest"
+              },
+              "example": {
+                "data": {
+                  "id": "13453",
+                  "type": "activity",
+                  "attributes": {
+                    "email": "vishwasransing@gmail.com",
+                    "mobile": "8805265888",
+                    "inputMessage": "Hello LLM!"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/signIn": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "signIn",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "email": "partner@example.com",
+                    "mobile": "9876543210",
+                    "password": "password123",
+                    "emailOtp": "123456",
+                    "mobileOtp": "654321",
+                    "ipAddress": "192.168.1.1"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Partner signed in successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/password/reset": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "resetPassword",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "email": "partner@example.com",
+                    "mobile": "9876543210",
+                    "emailOtp": "123456",
+                    "mobileOtp": "654321",
+                    "ipAddress": "192.168.1.1"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Password reset successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/profile": {
+      "put": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "updateProfile",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "email": "partner@example.com",
+                    "mobile": "9876543210",
+                    "password": "newPassword123",
+                    "emailOtp": "123456",
+                    "mobileOtp": "654321",
+                    "ipAddress": "192.168.1.1",
+                    "companyName": "Partner Corp",
+                    "companyAddress": "123 Partner Street",
+                    "dateOfIncorporation": "2000-01-01",
+                    "license": "ABC123",
+                    "cin": "XYZ789",
+                    "gstNo": "12AABCU1234K1ZV"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Partner profile updated successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/signUp": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "signUp",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "email": "partner@example.com",
+                    "mobile": "9876543210",
+                    "password": "password123",
+                    "emailOtp": "123456",
+                    "mobileOtp": "654321",
+                    "ipAddress": "192.168.1.1",
+                    "companyName": "Partner Corp",
+                    "companyAddress": "123 Partner Street",
+                    "dateOfIncorporation": "2000-01-01",
+                    "license": "ABC123",
+                    "cin": "XYZ789",
+                    "gstNo": "12AABCU1234K1ZV"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Partner signed up successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/otp/generate": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "generateOtp",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "partnerId": "12345"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OTP generated successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/otp/verify": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "verifyOtp",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "partnerId": "1",
+                    "emailOtp": "123456",
+                    "mobileOtp": "654321"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OTP verification successful",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/activity": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "createActivity",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "partnerId": "12345",
+                    "activityEventType": "Sign-in",
+                    "ipAddress": "192.168.1.1"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Partner activity created successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/activity/{partnerId}": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "getUserActivityForSpecificPartner",
+        "parameters": [
+          {
+            "name": "partnerId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the partner",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "activityEventType": "Sign-in"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "Activity data for a specific partner",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/activity/all": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "getAllActivitiesBasedOnEventType",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "activityEventType": "Sign-in"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "All activities for a given event type",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/otp/generate-reset": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "generateOtpForPasswordReset",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "email": "partner@example.com",
+                    "mobile": "9876543210"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OTP generated for password reset",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/otp/generate-register": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "generateOtpForNewRegistration",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "email": "partner@example.com",
+                    "mobile": "9876543210"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OTP generated for new partner registration",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/partners/banks/otp/generate-login": {
+      "post": {
+        "tags": [
+          "Partner-Controller"
+        ],
+        "operationId": "generateOtpForLogin",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "header",
+            "description": "UUID for each request",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RequestId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequest"
+              },
+              "example": {
+                "data": {
+                  "type": "partner",
+                  "attributes": {
+                    "email": "partner@example.com",
+                    "mobile": "9876543210"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OTP generated for login",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDTOObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "RequestDTO": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RequestData"
+          }
+        }
+      },
+      "RequestData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object"
+          }
+        }
+      },
+      "DataDTOObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object"
+          }
+        }
+      },
+      "ErrorDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      },
+      "MetaDTOObject": {
+        "type": "object",
+        "properties": {
+          "attributes": {
+            "type": "object"
+          }
+        }
+      },
+      "ResponseDTOObject": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DataDTOObject"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaDTOObject"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ErrorDTO"
+            }
+          }
+        }
+      },
+      "DataDTOListUserActivity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserActivityRequest"
+            }
+          }
+        }
+      },
+      "MetaDTOListUserActivity": {
+        "type": "object",
+        "properties": {
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserActivityRequest"
+            }
+          }
+        }
+      },
+      "ResponseDTOListUserActivity": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DataDTOListUserActivity"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaDTOListUserActivity"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ErrorDTO"
+            }
+          }
+        }
+      },
+      "UserActivityRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "pattern": "^[0-9]{1,6}$"
+                  },
+                  "eventType": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z]{5,50}$"
+                  },
+                  "eventDetails": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z]{5,100}$"
+                  },
+                  "startdate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "email": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9+_.-]+@(.+)$"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "pattern": "^[1-9]\\d{9}$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "RequestId": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9]",
+        "description": "UUID for each request"
+      },
+      "UserRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9+_.-]+@(.+)$",
+                    "description": "User's email address"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "pattern": "^[1-9]\\d{9}$",
+                    "description": "User's mobile number"
+                  },
+                  "password": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9@$&]{5,50}$"
+                  },
+                  "emailOtp": {
+                    "type": "string",
+                    "pattern": "^[0-9]{6}$"
+                  },
+                  "mobileOtp": {
+                    "type": "string",
+                    "pattern": "^[0-9]{6}$"
+                  },
+                  "ipAddress": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z][a-z]{0,49}$"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z][a-z]{0,49}$"
+                  },
+                  "termsAccepted": {
+                    "type": "string",
+                    "pattern": "^(true|false)$"
+                  },
+                  "gender": {
+                    "type": "string",
+                    "pattern": "^(male|female|other)$"
+                  },
+                  "dob": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "salutation": {
+                    "type": "string",
+                    "pattern": "^(Mr|Mrs)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "CardRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "bankName": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z][a-z]{1,49}$"
+                  },
+                  "cardNumber": {
+                    "type": "string",
+                    "pattern": "^[0-9]{16}$"
+                  },
+                  "expiry": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "issueDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "cardType": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z][a-z]{1,19}$"
+                  },
+                  "cardName": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z][a-z]{1,49}$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ChatRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9+_.-]+@(.+)$",
+                    "description": "User's email address"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "pattern": "^[1-9]\\d{9}$",
+                    "description": "User's mobile number"
+                  },
+                  "inputMessage": {
+                    "type": "string",
+                    "description": "Input message to be sent to LLM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PartnerRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9+_.-]+@(.+)$",
+                    "description": "User's email address"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "pattern": "^[1-9]\\d{9}$",
+                    "description": "User's mobile number"
+                  },
+                  "password": {
+                    "type": "string",
+                    "patern": "",
+                    "description": "Password"
+                  },
+                  "emailOtp": {
+                    "type": "string",
+                    "pattern": "^\\d{6}$",
+                    "description": "OTP sent to the user's email, exactly 6 digits."
+                  },
+                  "mobileOtp": {
+                    "type": "string",
+                    "pattern": "^\\d{6}$",
+                    "description": "OTP sent to the user's mobile number, exactly 6 digits."
+                  },
+                  "ipAddress": {
+                    "type": "string",
+                    "description": "IP address."
+                  },
+                  "companyName": {
+                    "type": "string",
+                    "pattern": "^[\\w\\s]+$",
+                    "description": "Name of the company; only letters, numbers, and spaces."
+                  },
+                  "companyAddress": {
+                    "type": "string",
+                    "description": "Address of the company."
+                  },
+                  "dateOfIncorporation": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "license": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "description": "License number - alphanumeric characters."
+                  },
+                  "cin": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9]+$"
+                  },
+                  "gstNo": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9]+$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "headers": {
+      "authToken": {
+        "description": "JWT Authorization Token",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

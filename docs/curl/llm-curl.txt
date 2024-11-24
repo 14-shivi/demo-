@@ -1,0 +1,8 @@
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyA4mKVx_l68uH8VMEwRgMPDnXhD1DwR5BY" \
+-H 'Content-Type: application/json' \
+-X POST \
+-d '{
+  "contents": [{
+    "parts":[{"text": "prompt"}]
+    }]
+   }'
